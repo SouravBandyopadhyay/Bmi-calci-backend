@@ -11,7 +11,7 @@ userRouter.post("/login", async (req, res) => {
       return res.status(401).send("Invalid Details");
     }
     return res.send({
-      token: `${find_user.id}`,
+      token: `${find_user.id}`
     });
   } catch (err) {
     return res.status(401).send(err.message);
@@ -26,11 +26,11 @@ userRouter.post("/register", async (req, res) => {
     if (find_user) {
       return res
         .status(401)
-        .send("Email is already exist try using different email");
+        .send("Email is already exist");
     }
     const newUser = await User.create(req.body);
     res.send({
-      token: `${newUser.id}`,
+      token: `${newUser.id}`
     });
   } catch (e) {
     res.status(500).send(e.message);
